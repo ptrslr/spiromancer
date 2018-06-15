@@ -2,7 +2,7 @@
 import { lcm } from 'mathjs';
 import shortid from 'shortid';
 
-const theta = 0.05;
+const step = 0.05;
 
 class Trochoid {
   id: number;
@@ -113,7 +113,7 @@ class Trochoid {
     this.drawing.stroke(this.color);
     this.drawing.strokeWeight(this.strokeWeight);
     this.drawing.beginShape();
-    for (let angle = 0; angle < maxAngle; angle += theta) {
+    for (let angle = 0; angle < maxAngle; angle += step) {
       // console.log(`${angle} -> ${angleRad}`);
       x = this.getX(angle);
       y = this.getY(angle);
@@ -136,7 +136,7 @@ class Trochoid {
       const oldX = centerX + this.getX(this.angle);
       const oldY = centerY + this.getY(this.angle);
 
-      this.angle += theta;
+      this.angle += step;
 
       const newX = centerX + this.getX(this.angle);
       const newY = centerY + this.getY(this.angle);

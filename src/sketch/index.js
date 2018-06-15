@@ -33,18 +33,20 @@ function sketch(p5: Object) {
 
   const initControls = () => {
     // console.log(window.localStorage.getItem(`${window.location.href}.gui`));
-    const folders = JSON.parse(
+    const localStorage = JSON.parse(
       window.localStorage.getItem(`${window.location.href}.gui`),
-    ).folders;
+    );
+
+    const folders = localStorage ? localStorage.folders : null;
     // console.log(folders);
 
     if (gui) {
       gui.destroy();
     }
     gui = new dat.GUI();
+    gui.localStorage = true;
     gui.remember(controls);
     // gui.remember(controls.trochoids);
-    gui.localStorage = true;
     gui.width = 360;
     gui.add(controls, 'save').name('Export');
     gui.add(controls, 'speed', 1, 200).step(1);
